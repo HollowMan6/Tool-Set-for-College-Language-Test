@@ -1,6 +1,6 @@
 # Download-Tools-for-CET-Admission-Ticket
 
-This is a Download Tool Coded Using Python Tkinter to Batch Download CET Admission Ticket
+This is a Download Tool Coded Using Python Tkinter to Batch Download CET Admission Ticket（CET准考证批量下载工具）
 
 [Win程序:](Download-Tools-for-CET-Admission-Ticket.exe) 
 
