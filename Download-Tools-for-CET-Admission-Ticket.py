@@ -49,7 +49,7 @@ class visit:
 
     def login(self, provinceCode, IDTypeCode, IDNumber, Name, verificationCode):
         # 页面相关设置 Page Related Settings
-        global countt, end, flag, quest, ssid, pool, btn
+        global countt, end, flag, quest, ssid, pool, btn, IDNumberlist, Namelist
         infourl = 'http://cet.etest.net.cn/Home/ToQuickPrintTestTicket'
         try:
             # 获取下载SID
@@ -87,16 +87,20 @@ class visit:
                     if sid.isalnum():
                         downlink = "http://cet.etest.net.cn/Home/DownTestTicket?SID="+sid
                         download = self.s.get(downlink).content
-                        count += 1
-                        w = open("Downloads/"+Name+str(count)+'.zip', 'wb')
-                        w.write(download)
-                        w.close()
-                        Namelist.pop(IDNumberlist.index(IDNumber))
-                        IDNumberlist.pop(IDNumberlist.index(IDNumber))
-                        lb.insert(tk.END, Name)
-                        T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
-                                 Name+str(count)+".zip\n")
+                        if len(download) < 666:
+                            threadmax.release()
+                            return
+                        else:
+                            count += 1
+                            w = open("Downloads/"+Name+str(count)+'.zip', 'wb')
+                            w.write(download)
+                            w.close()
+                            lb.insert(tk.END, Name)
+                            T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
+                                     Name+str(count)+".zip\n")
                 countt += 1
+                Namelist.pop(IDNumberlist.index(IDNumber))
+                IDNumberlist.pop(IDNumberlist.index(IDNumber))
                 a.set("总计 "+str(countt)+" 个")
                 threadmax.release()
         except Exception:
@@ -104,23 +108,15 @@ class visit:
             pass
 
 
-# 打开数据文件 Open data files
-f = open("list.txt", encoding='UTF-8')
-line = f.readline()
-while line:
-    li = line.split(" ")
-    Namelist.append(li[0])
-    IDNumberlist.append(li[1].replace("\n", ""))
-    line = f.readline()
-f.close()
-
 # 使用多线程 Using multithreading
 # 限制线程的最大数量为32个 The maximum number of restricted threads is 32
 threadmax = threading.BoundedSemaphore(32)
 
 # 定义爬虫线程 Define Spider Thread
+
+
 def main():
-    global flag
+    global flag, IDNumberlist, Namelist
     l = []
     for IDNumber in IDNumberlist:
         if end == True:
@@ -144,34 +140,43 @@ def run():
     global root, flag, end, ssid, pool, quest, verificationCode
     end = False
     quest = False
-    try:
-        if not os.path.exists('Downloads'):
-            os.makedirs('Downloads')
-        verificationCode = e.get()
-        ssid = e1.get()
-        pool = e2.get()
-        if verificationCode == "":
-            tkinter.messagebox .showerror('错误', '请输入验证码！', parent=root)
-        elif ssid == "" or pool == "":
-            tkinter.messagebox .showerror('错误', '请输入当前Cookies！', parent=root)
-        elif flag == True:
-            tkinter.messagebox .showwarning(
-                '警告', '已经在下载中，请耐心等待！退出请点击“退出”按钮。', parent=root)
-        else:
-            flag = True
-            t = threading.Thread(target=main)
-            t.setDaemon(True)
-            t.start()
-    except FileNotFoundError:
-        tkinter.messagebox .showerror(
-            '错误', '请准备好数据文件list.txt并放在软件的同一目录下！', parent=root)
-        root.destroy()
+    if not os.path.exists('Downloads'):
+        os.makedirs('Downloads')
+    verificationCode = e.get()
+    ssid = e1.get()
+    pool = e2.get()
+    if verificationCode == "":
+        tkinter.messagebox .showerror('错误', '请输入验证码！', parent=root)
+    elif ssid == "" or pool == "":
+        tkinter.messagebox .showerror('错误', '请输入当前Cookies！', parent=root)
+    elif flag == True:
+        tkinter.messagebox .showwarning(
+            '警告', '已经在下载中，请耐心等待！退出请点击“退出”按钮。', parent=root)
+    else:
+        flag = True
+        t = threading.Thread(target=main)
+        t.setDaemon(True)
+        t.start()
 
 
 # Tkinter 界面设定 UI Setting
 root = tk.Tk()
 root.title('Download Tools for CET Admission Ticket -- By Hollow Man')
 root.geometry('540x700')
+try:
+    # 打开数据文件 Open data files
+    f = open("list.txt", encoding='UTF-8')
+    line = f.readline()
+    while line:
+        li = line.split(" ")
+        Namelist.append(li[0])
+        IDNumberlist.append(li[1].replace("\n", ""))
+        line = f.readline()
+    f.close()
+except FileNotFoundError:
+    tkinter.messagebox .showerror(
+        '错误', '请准备好数据文件list.txt并放在软件的同一目录下！', parent=root)
+    root.destroy()
 tk.Label(text='报名所在地：').pack(anchor=tk.W)
 cmb = ttk.Combobox(root)
 cmb.pack(anchor=tk.W)
@@ -182,12 +187,12 @@ val = {'北京': 11, '天津': 12, '河北': 13, '吉林': 22, '黑龙江': 23, 
        '湖北': 42, '广东': 44, '广西': 45, '海南': 46, '重庆': 50, '四川': 51, '贵州': 52, '云南': 53, '甘肃': 62, '青海': 63, '宁夏': 64, '澳门': 82}
 
 
-def func(event):
+def func(*args):
     global provinceCode
     provinceCode = val[cmb.get()]
-
-
 cmb.bind("<<ComboboxSelected>>", func)
+
+
 tk.Label(text='证件类型：').pack(anchor=tk.W)
 cmb1 = ttk.Combobox(root)
 cmb1.pack(anchor=tk.W)
@@ -198,12 +203,20 @@ val1 = {'中华人民共和国居民身份证': 1, '台湾居民往来大陆通�
         '护照': 4, '香港身份证': 5, '澳门身份证': 6, '港澳居民居住证': 7, '台湾居民居住证': 8}
 
 
-def func1(event):
+def func1(*args):
     global IDTypeCode
     IDTypeCode = val1[cmb1.get()]
+cmb1.bind("<<ComboboxSelected>>", func1)
 
 
-cmb.bind("<<ComboboxSelected>>", func1)
+def pause():
+    global end, flag
+    flag = False
+    end = True
+    tkinter.messagebox .showinfo(
+        '提示', '正在暂停所有线程，请稍后！...', parent=root)
+
+
 tk.Label(text='验证码：').pack(anchor=tk.W)
 e = tk.Entry(root)
 e.pack(anchor=tk.W)
@@ -223,6 +236,7 @@ lb = tk.Listbox(root, selectmode=tk.SINGLE, listvariable=lbv)
 scr = tk.Scrollbar(root)
 lb.pack()
 btn = tk.Button(root, text="开始", command=run).pack(anchor=tk.CENTER)
+tk.Button(root, text="暂停", command=pause).pack(anchor=tk.CENTER)
 tk.Button(root, text="退出", command=root.destroy).pack(anchor=tk.CENTER)
 lb.config(yscrollcommand=scr.set)
 scr.config(command=lb.yview)
