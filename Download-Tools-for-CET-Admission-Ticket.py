@@ -102,6 +102,7 @@ class visit:
                                     T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
                                             Name+str(count)+".zip\n")
                             else:
+                                threadmax.release()
                                 return
                     countt += 1
                     Namelist.pop(IDNumberlist.index(IDNumber))
