@@ -42,7 +42,7 @@ This is a Download Tool Coded Using Python Tkinter to Batch Download CET Admissi
 
 ```shell
 cd ./Downloads
-unzip \*.zip
+unzip -O CP936 \*.zip
 cd ..
 python3 Get-Info-from-CET-Admission-Ticket.py
 ```
@@ -98,7 +98,7 @@ First, make sure that the open directory is the directory where the Python scrip
 
 ```shell
 cd ./Downloads
-unzip \*.zip
+unzip -O CP936 \*.zip
 cd ..
 python3 Get-Info-from-CET-Admission-Ticket.py
 ```

@@ -1,9 +1,7 @@
 #!/bin/bash 
 echo "正在解压文件......"
 echo "Unzipping files..."
-for z in ./Downloads/*.zip; 
-do unzip $z -d ./Downloads/; 
-done
+unzip -O CP936 -d ./Downloads ./Downloads/\*.zip
 echo "Done!"
 echo "完成！"
 echo "正在运行提取信息脚本......"
