@@ -1,3 +1,7 @@
+# -*- coding:utf-8 -*-
+# by 'hollowman6' from Lanzhou University(兰州大学)
+
+
 from pdfminer.layout import LTTextBoxHorizontal, LAParams
 from pdfminer.pdfparser import PDFParser, PDFDocument
 from pdfminer.pdfinterp import PDFTextExtractionNotAllowed
