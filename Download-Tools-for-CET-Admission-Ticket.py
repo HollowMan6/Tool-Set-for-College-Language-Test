@@ -62,47 +62,48 @@ class visit:
             }
             cookies = {'ASP.NET_SessionId': ssid,
                        'BIGipServercet_pool': pool}
-            r = self.s.post(infourl, postdata, cookies=cookies).content.decode(
-                'UTF-8', 'ignore')
-            if "验证码已超时失效，请重新输入。" in r:
-                end = True
-                flag = False
-                if quest == False:
-                    quest = True
-                    T.insert(tk.END, "请刷新验证码！\n")
-                    tkinter.messagebox .showerror(
-                        '错误', '请刷新验证码！', parent=root)
-            elif "验证码错误" in r:
-                end = True
-                flag = False
-                if quest == False:
-                    quest = True
-                    T.insert(tk.END, "验证码错误！\n")
-                    tkinter.messagebox .showerror(
-                        '错误', '验证码错误！', parent=root)
-            else:
-                sids = re.findall(r'{\\"SID\\":\\"(.+?)\\"', str(r))
-                for sid in sids:
-                    count = 0
-                    if sid.isalnum():
-                        downlink = "http://cet.etest.net.cn/Home/DownTestTicket?SID="+sid
-                        download = self.s.get(downlink).content
-                        if len(download) < 666:
-                            threadmax.release()
-                            return
-                        else:
-                            count += 1
-                            w = open("Downloads/"+Name+str(count)+'.zip', 'wb')
-                            w.write(download)
-                            w.close()
-                            lb.insert(tk.END, Name)
-                            T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
-                                     Name+str(count)+".zip\n")
-                countt += 1
-                Namelist.pop(IDNumberlist.index(IDNumber))
-                IDNumberlist.pop(IDNumberlist.index(IDNumber))
-                a.set("总计 "+str(countt)+" 个")
-                threadmax.release()
+            r = self.s.post(infourl, postdata, cookies=cookies)
+            if r.status_code== 200:
+                r=r.content.decode('UTF-8', 'ignore')
+                if "验证码已超时失效，请重新输入。" in r:
+                    end = True
+                    flag = False
+                    if quest == False:
+                        quest = True
+                        T.insert(tk.END, "请刷新验证码！\n")
+                        tkinter.messagebox .showerror(
+                            '错误', '请刷新验证码！', parent=root)
+                elif "验证码错误" in r:
+                    end = True
+                    flag = False
+                    if quest == False:
+                        quest = True
+                        T.insert(tk.END, "验证码错误！\n")
+                        tkinter.messagebox .showerror(
+                            '错误', '验证码错误！', parent=root)
+                else:
+                    sids = re.findall(r'{\\"SID\\":\\"(.+?)\\"', str(r))
+                    for sid in sids:
+                        count = 0
+                        if sid.isalnum():
+                            downlink = "http://cet.etest.net.cn/Home/DownTestTicket?SID="+sid
+                            download = self.s.get(downlink).content
+                            if len(download) < 666:
+                                threadmax.release()
+                                return
+                            else:
+                                count += 1
+                                w = open("Downloads/"+Name+str(count)+'.zip', 'wb')
+                                w.write(download)
+                                w.close()
+                                lb.insert(tk.END, Name)
+                                T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
+                                        Name+str(count)+".zip\n")
+                    countt += 1
+                    Namelist.pop(IDNumberlist.index(IDNumber))
+                    IDNumberlist.pop(IDNumberlist.index(IDNumber))
+                    a.set("总计 "+str(countt)+" 个")
+            threadmax.release()
         except Exception:
             threadmax.release()
             pass
