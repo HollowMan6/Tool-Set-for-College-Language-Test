@@ -87,18 +87,22 @@ class visit:
                         count = 0
                         if sid.isalnum():
                             downlink = "http://cet.etest.net.cn/Home/DownTestTicket?SID="+sid
-                            download = self.s.get(downlink).content
-                            if len(download) < 666:
-                                pass
+                            download = self.s.get(downlink)
+                            if download.status_code == 200:
+                                download=download.content
+                                if len(download) < 666:
+                                    pass
+                                else:
+                                    count += 1
+                                    w = open("Downloads/"+Name +
+                                            str(count)+'.zip', 'wb')
+                                    w.write(download)
+                                    w.close()
+                                    lb.insert(tk.END, Name)
+                                    T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
+                                            Name+str(count)+".zip\n")
                             else:
-                                count += 1
-                                w = open("Downloads/"+Name +
-                                         str(count)+'.zip', 'wb')
-                                w.write(download)
-                                w.close()
-                                lb.insert(tk.END, Name)
-                                T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
-                                         Name+str(count)+".zip\n")
+                                return
                     countt += 1
                     Namelist.pop(IDNumberlist.index(IDNumber))
                     IDNumberlist.pop(IDNumberlist.index(IDNumber))
