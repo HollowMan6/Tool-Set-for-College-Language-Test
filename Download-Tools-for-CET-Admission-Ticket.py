@@ -63,8 +63,8 @@ class visit:
             cookies = {'ASP.NET_SessionId': ssid,
                        'BIGipServercet_pool': pool}
             r = self.s.post(infourl, postdata, cookies=cookies)
-            if r.status_code== 200:
-                r=r.content.decode('UTF-8', 'ignore')
+            if r.status_code == 200:
+                r = r.content.decode('UTF-8', 'ignore')
                 if "验证码已超时失效，请重新输入。" in r:
                     end = True
                     flag = False
@@ -89,16 +89,16 @@ class visit:
                             downlink = "http://cet.etest.net.cn/Home/DownTestTicket?SID="+sid
                             download = self.s.get(downlink).content
                             if len(download) < 666:
-                                threadmax.release()
-                                return
+                                pass
                             else:
                                 count += 1
-                                w = open("Downloads/"+Name+str(count)+'.zip', 'wb')
+                                w = open("Downloads/"+Name +
+                                         str(count)+'.zip', 'wb')
                                 w.write(download)
                                 w.close()
                                 lb.insert(tk.END, Name)
                                 T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
-                                        Name+str(count)+".zip\n")
+                                         Name+str(count)+".zip\n")
                     countt += 1
                     Namelist.pop(IDNumberlist.index(IDNumber))
                     IDNumberlist.pop(IDNumberlist.index(IDNumber))
@@ -132,7 +132,8 @@ def main():
         l.append(t)
     for t in l:
         t.join()
-    tkinter.messagebox .showinfo('完成', 'list.txt中的账号已经下载完毕！', parent=root)
+    tkinter.messagebox .showinfo(
+        '完成', '下载完毕！可能一些账号仍未下载。\n请再次点击“开始”按钮下载', parent=root)
     flag = False
 
 
@@ -191,6 +192,8 @@ val = {'北京': 11, '天津': 12, '河北': 13, '吉林': 22, '黑龙江': 23, 
 def func(*args):
     global provinceCode
     provinceCode = val[cmb.get()]
+
+
 cmb.bind("<<ComboboxSelected>>", func)
 
 
@@ -207,6 +210,8 @@ val1 = {'中华人民共和国居民身份证': 1, '台湾居民往来大陆通�
 def func1(*args):
     global IDTypeCode
     IDTypeCode = val1[cmb1.get()]
+
+
 cmb1.bind("<<ComboboxSelected>>", func1)
 
 
@@ -249,7 +254,7 @@ S.pack(side=tk.RIGHT, fill=tk.Y)
 T.pack(side=tk.RIGHT, fill=tk.Y)
 S.config(command=T.yview)
 T.config(yscrollcommand=S.set)
-quote = """警告：\n仅供测试使用，不可用于任何非法用途！\n对于使用本代码所造成的一切不良后果，本人将不负任何责任！\n\n说明：请将list.txt文件放在程序运行目录下后再运行本软件,list.txt一行代表一条数据，其格式为\n姓名 证件号\n运行软件的同时，请用浏览器打开\nhttp://cet.etest.net.cn/Home/QuickPrintTestTicket\n ，输入你看到的验证码到本软件中，并且获取Cookies中ASP.NET_SessionId和BIGipServercet_pool的值。\n如果提示验证码已过期，请点击网页中的验证码图片，以刷新验证码，再将该验证码输入到本软件中\n如果总提示验证码已过期，请考虑是否为Cookies输入错误"""
+quote = """警告：\n仅供测试使用，不可用于任何非法用途！\n对于使用本代码所造成的一切不良后果，本人将不负任何责任！\n\n说明：请将list.txt文件放在程序运行目录下后再运行本软件,list.txt一行代表一条数据，其格式为\n姓名 证件号\n运行软件的同时，请用浏览器打开\nhttp://cet.etest.net.cn/Home/QuickPrintTestTicket\n ，输入你看到的验证码到本软件中，并且获取Cookies中ASP.NET_SessionId和BIGipServercet_pool的值。\n如果提示验证码已过期，请点击网页中的验证码图片，以刷新验证码，再将该验证码输入到本软件中\n如果总提示验证码已过期，请考虑是否为Cookies输入错误\n程序运行过程中向list.txt添加账号是无效的，必须重新运行程序。\n程序重新运行时将恢复到初始状态。\n下载结束后，请多次点击开始按钮，直到已查询账号数字不再增加，从而确保所有账号都已被下载。"""
 T.insert(tk.END, quote)
 
 root.mainloop()

@@ -21,6 +21,12 @@ This is a Download Tool Coded Using Python Tkinter to Batch Download CET Admissi
 
 运行下载工具的同时，请用浏览器打开[CET快速打印准考证网站](http://cet.etest.net.cn/Home/QuickPrintTestTicket)，输入你看到的验证码到下载工具中，并且获取Cookies中ASP.NET_SessionId和BIGipServercet_pool的值。如果提示验证码已过期，请点击网页中的验证码图片，以刷新验证码，再将该验证码输入到本下载工具中。如果总提示验证码已过期，请考虑是否为Cookies输入错误。
 
+程序运行过程中向list.txt添加账号是无效的，必须重新运行程序。
+
+程序重新运行时将恢复到初始状态。
+
+下载结束后，请多次点击开始按钮，直到已查询账号数字不再增加，从而确保所有账号都已被下载。
+
 下载完成之后，请直接解压Downloads目录下的zip文件到Downloads目录，并运行[PDF信息处理脚本](Get-Info-from-CET-Admission-Ticket.py)，随后将在目录下生成info.txt,其格式为：
 
 ```text
@@ -67,6 +73,12 @@ Name ID
 While running the Download Tool, open [CET Fast Admission Ticket Print](http://cet.etest.net.cn/Home/QuickPrintTestTicket) with a browser.
 Enter the validation code you see into this Download Tool and get the values of ASP.NET_SessionId and BIGipServercet_pool in Cookies.
 If the prompt verification code has expired, please click on the picture of the verification code in the web page to refresh the verification code, and then input the verification code into the Download Tool. If the total prompt verification code has expired, please consider whether the error is entered for Cookies.
+
+It is invalid to add an account to list.txt during the running process of the program, and the program must be re-run.
+
+The program restores to its initial state when it is re-run.
+
+After the download is over, please click the start button many times until the number of inquired accounts no longer increases, so as to ensure that all accounts have been downloaded.
 
 After downloading, please decompress the zip file from the Downloads directory directly to the Downloads directory and run the [PDF Info Handling Script](Get-Info-from-CET-Admission-Ticket.py). Then, info.txt will be generated under the directory in the format of:
 
