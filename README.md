@@ -1,5 +1,8 @@
 # Download-Tools-for-CET-Admission-Ticket
 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/)
+
 This is a Download Tool Coded Using Python Tkinter to Batch Download CET Admission Ticket（CET准考证批量下载工具）
 
 [Win程序:](Download-Tools-for-CET-Admission-Ticket.exe) 
