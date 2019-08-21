@@ -71,9 +71,34 @@ def get_files(path='Downloads', rule=".pdf"):
 
 if __name__ == '__main__':
     pdflist = get_files()
+    input("使用前请确保所有pdf文件已经解压到Downloads目录下，且文件名格式类似于“2019年上半年英语六级笔试准考证(XXX).pdf”,准备好后按回车键继续...")
     fw = open("info.txt", 'a', encoding="UTF-8")
     print("正在提取中，请稍后...")
+    # 考试代码 Exam Code
     for name in pdflist:
-        fw.write(parse(name)+"\n")
+        t='2'
+        wd='CET4_'
+        if name[15]=='上':
+            t='1'
+        if '英语六级' in name:
+            wd='CET6_'
+        elif '俄语四级' in name:
+            ed='CRT4_'
+        elif '俄语六级' in name:
+            wd='CRT6_'
+        elif '德语四级' in name:
+            ed='PHS4_'
+        elif '德语六级' in name:
+            wd='PHS6_'
+        elif '法语四级' in name:
+            ed='TFU4_'
+        elif '法语六级' in name:
+            wd='TFU6_'
+        elif '日语四级' in name:
+            ed='CJT4_'
+        elif '日语六级' in name:
+            ed='CJT6_'
+        print(name)
+        fw.write(wd+name[12:14]+t+'_DANGCI '+parse(name)+"\n")
     fw.close()
-    print("成功！")
+    input("全部完成！按回车键退出...")
