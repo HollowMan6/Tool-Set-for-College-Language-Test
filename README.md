@@ -79,6 +79,8 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
     ...     ...  ...  ...  ...   ...       ...        ...       ...
 ```
 
+然后你可以选用[数据去重脚本](De-duplication.py)去除因口语和笔试准考证重复导致的成绩重复。
+
 **警告**：
 
 ***仅供测试使用，不可用于任何非法用途！***
@@ -158,6 +160,8 @@ The result.txt is generated after the scoring is completed in the following form
 Written Examination Number, Name, School, Total Score, Listening Score, Reading Score, Writing and Translation Score, Oral Examination Number, Oral Level.
 
 ```
+
+then you can choose [De-duplication Script](De-duplication.py) to remove duplicate data due to the oral and written test number owned by the same one.
 
 **Warning**:
 
