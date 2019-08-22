@@ -49,7 +49,7 @@ class visit:
 
     def login(self, provinceCode, IDTypeCode, IDNumber, Name, verificationCode):
         # 页面相关设置 Page Related Settings
-        global countt, end, flag, quest, ssid, pool, btn, IDNumberlist, Namelist
+        global countt, end, flag, quest, ssid, pool , IDNumberlist, Namelist
         infourl = 'http://cet.etest.net.cn/Home/ToQuickPrintTestTicket'
         try:
             # 获取下载SID
@@ -246,7 +246,7 @@ lbv = tk.StringVar()
 lb = tk.Listbox(root, selectmode=tk.SINGLE, listvariable=lbv)
 scr = tk.Scrollbar(root)
 lb.pack()
-btn = tk.Button(root, text="开始", command=run).pack(anchor=tk.CENTER)
+tk.Button(root, text="开始", command=run).pack(anchor=tk.CENTER)
 tk.Button(root, text="暂停", command=pause).pack(anchor=tk.CENTER)
 tk.Button(root, text="退出", command=root.destroy).pack(anchor=tk.CENTER)
 lb.config(yscrollcommand=scr.set)

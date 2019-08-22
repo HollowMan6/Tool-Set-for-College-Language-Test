@@ -9,15 +9,20 @@ CLT = College Language Test
 
 适用范围包括大学英语、俄语、德语、法语、日语四六级考试
 
-***新*** : 2019.8.21 新增成绩查询工具（无验证码状态）（在2019.8.21 9：00-15：00（UTC+8）时使用亲测成功。）
+***新*** : 2019.8.22 新增成绩查询工具（学信网通道，更换IP免验证码）
+***新*** : 2019.8.21 新增成绩查询工具（教考网通道，无验证码状态）（在2019.8.21 9：00-15：00（UTC+8）时使用亲测成功。）
 
 [Win程序(准考证下载):](Download-Tools-for-CLT-Admission-Ticket.exe) 
 
 ![](screenshoot.JPG) 
 
-[Win程序(无验证码成绩查询):](Inquire-Mark-Tool-for-CLT.exe) 
+[Win程序(教考网通道成绩查询):](Inquire-Mark-Tool-from-NEEA-for-CLT.exe) 
 
 ![](screenshoot1.JPG)
+
+[Win程序(学信网通道成绩查询):](Inquire-Mark-Tool-from-CHSI-for-CLT.exe) 
+
+![](screenshoot2.JPG)
 
 [下载工具脚本](Download-Tools-for-CLT-Admission-Ticket.py)
 
@@ -64,13 +69,15 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 利用info.txt中的信息，可以进一步进行查分等操作。
 
-你可以在特定机遇下（不需要验证码查分时），运行查分脚本进行批量查分:
+***（不推荐）***你可以在特定机遇下（在教考网查分不需要验证码时），运行[教考网通道查分脚本](Inquire-Mark-Tool-from-NEEA-for-CLT.py)进行批量查分:
 
 * 首先运行Fiddler等抓包工具，摸清可调用查分功能的地址。
   
 * 随后在脚本程序中输入成绩查询服务器
 
 例：你抓包获得的地址是**http://47.94.127.138/CLT/query?data=xxxxxxxxxxxx** , 则在界面中输入**http://47.94.127.138/CLT/query?data**
+
+***（推荐）*** [学信网通道查分脚本:](Inquire-Mark-Tool-from-CHSI-for-CLT.py) 因为学信网查分默认不要输入验证码，仅当你的IP查分请求过多才会要求你输入验证码，你可以通过挂VPN的方法免验证码，因而此法较为稳定。
 
 查分完成后会生成result.txt, 其格式为:
 
@@ -87,14 +94,18 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
-*** New ***: 2019.8.21 New Mark Inquiry Tool (without Captcha) (Tested and available from 2019.21 9:00 to 15:00 (UTC+8)).
+***NEW*** : 2019.8.22 New Mark Inquiry Tool (using CHSI, change IP to avoid CHAPTCHA)
+
+***NEW***: 2019.8.21 New Mark Inquiry Tool (using NEEA without Captcha) (Tested and available from 2019.21 9:00 to 15:00 (UTC+8)).
 
 
 support band 4 and band 6 CET/CJT/CRT/PHS/TFU
 
 [Windows Program(Ticket Download Tool)](Download-Tools-for-CLT-Admission-Ticket.exe)
 
-[Windows Program(Mark Inquiry without Captcha):](Inquire-Mark-Tool-for-CLT.exe) 
+[Windows Program(Mark Inquiry from NEEA without Captcha):](Inquire-Mark-Tool-from-NEEA-for-CLT.exe) 
+
+[Windows Program(Mark Inquiry from CHSI without Captcha):](Inquire-Mark-Tool-from-CHSI-for-CLT.exe) 
 
 [Download Tool Script](Download-Tools-for-CLT-Admission-Ticket.py)
 
@@ -146,13 +157,15 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 The information in info.txt can be used for further operations.
 
-You can run the Mark Inquiry script to do batch Mark Inquiry at a specific opportunity (when no validation code is needed):
+***Unrecommended*** You can run the [Inquire Mark Tool from NEEA for CLT](Inquire-Mark-Tool-from-NEEA-for-CLT.py) to do batch Mark Inquiry at a specific opportunity (when no validation code is needed using NEEA):
 
 * First, run Fiddler and other package capture tools to find out the address of the invokable Mark Inquiry function sever.
 
 * Then enter the Mark Inquiry server address in the script program
 
 eg.: The address you get by grabbing the package is **http://47.94.127.138/CLT/query? Data = xxxxxxxxxxxxxxxxxx**, then enter **http://47.94.127.138/CLT/query data** in the interface.
+
+***recommended*** [Inquire Mark Tool from CHSI for CLT:](Inquire-Mark-Tool-from-CHSI-for-CLT.py) Because CHSI does not need you to enter the verification code by default, only when your request too many marks through you IP will you be required to enter the verification code. You can use the method of hanging VPN to exempt the verification code, so this method is more stable.
 
 The result.txt is generated after the scoring is completed in the following format:
 
