@@ -1,2 +1,3 @@
 requests
 pdfminer3k
+lxml

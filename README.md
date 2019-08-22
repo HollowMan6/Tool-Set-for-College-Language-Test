@@ -9,7 +9,7 @@ CLT = College Language Test
 
 适用范围包括大学英语、俄语、德语、法语、日语四六级考试
 
-***新*** : 2019.8.22 新增成绩查询工具（学信网通道，更换IP免验证码）
+***新*** : 2019.8.22 新增成绩查询工具（稳定）（学信网通道，更换IP免验证码）
 ***新*** : 2019.8.21 新增成绩查询工具（教考网通道，无验证码状态）（在2019.8.21 9：00-15：00（UTC+8）时使用亲测成功。）
 
 [Win程序(准考证下载):](Download-Tools-for-CLT-Admission-Ticket.exe) 
@@ -94,7 +94,7 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
-***NEW*** : 2019.8.22 New Mark Inquiry Tool (using CHSI, change IP to avoid CHAPTCHA)
+***NEW*** : 2019.8.22 New Mark Inquiry Tool (Stable)(using CHSI, change IP to avoid CHAPTCHA)
 
 ***NEW***: 2019.8.21 New Mark Inquiry Tool (using NEEA without Captcha) (Tested and available from 2019.21 9:00 to 15:00 (UTC+8)).
 
