@@ -69,7 +69,7 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 利用info.txt中的信息，可以进一步进行查分等操作。
 
-***（不推荐）***你可以在特定机遇下（在教考网查分不需要验证码时），运行[教考网通道查分脚本](Inquire-Mark-Tool-from-NEEA-for-CLT.py)进行批量查分:
+***（不推荐）*** 你可以在特定机遇下（在教考网查分不需要验证码时），运行[教考网通道查分脚本](Inquire-Mark-Tool-from-NEEA-for-CLT.py)进行批量查分:
 
 * 首先运行Fiddler等抓包工具，摸清可调用查分功能的地址。
   
@@ -96,7 +96,7 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 ***NEW*** : 2019.8.22 New Mark Inquiry Tool (Stable)(using CHSI, change IP to avoid CHAPTCHA)
 
-***NEW***: 2019.8.21 New Mark Inquiry Tool (using NEEA without Captcha) (Tested and available from 2019.21 9:00 to 15:00 (UTC+8)).
+***NEW*** : 2019.8.21 New Mark Inquiry Tool (using NEEA without Captcha) (Tested and available from 2019.21 9:00 to 15:00 (UTC+8)).
 
 
 support band 4 and band 6 CET/CJT/CRT/PHS/TFU
