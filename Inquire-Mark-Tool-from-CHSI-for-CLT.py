@@ -15,7 +15,6 @@ I will not be responsible for any adverse consequences caused by using this code
 # 多线程 Multithreading
 import threading
 # 文件处理 File processing
-import io
 import os
 # 爬虫库导入 Import Spider
 import requests
@@ -23,7 +22,6 @@ from lxml import etree
 # 图形界面 UI
 import tkinter as tk
 import tkinter.messagebox
-from tkinter import ttk
 
 # 变量设定
 end = True
@@ -112,7 +110,6 @@ class check:
                     name = name[0].replace(" ", "").replace(
                         "\t", "").replace("\r", "").replace("\n", "")
                 else:
-                    name = ' '
                     # 释放信号量，可用信号量加一 Release semaphores, add one semaphore
                     threadmax.release()
                     return
@@ -181,7 +178,6 @@ class check:
             threadmax.release()
         except Exception:
             threadmax.release()
-            pass
 
 
 dlist = []

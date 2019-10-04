@@ -15,7 +15,6 @@ I will not be responsible for any adverse consequences caused by using this code
 # 多线程 Multithreading
 import threading
 # 文件处理 File processing
-import io
 import os
 # 正则表达式搜索 Regular expression search
 import re
@@ -24,7 +23,6 @@ import requests
 # 图形界面 UI
 import tkinter as tk
 import tkinter.messagebox
-from tkinter import ttk
 
 # 变量设定
 end = True
@@ -143,7 +141,6 @@ class check:
                 threadmax.release()
         except Exception:
             threadmax.release()
-            pass
 
 
 dlist = []

@@ -111,7 +111,6 @@ class visit:
             threadmax.release()
         except Exception:
             threadmax.release()
-            pass
 
 
 # 使用多线程 Using multithreading
