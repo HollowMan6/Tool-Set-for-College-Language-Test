@@ -19,6 +19,8 @@
 
 (English version is down below)
 
+[Python库依赖](../../network/dependencies)
+
 CLT准考证批量下载，成绩查询工具
 
 适用范围包括大学英语、俄语、德语、法语、日语四六级考试
@@ -109,6 +111,8 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
 # Tool Set for College Language Test
+
+[Python Dependencies](../../network/dependencies)
 
 This is a Download and Mark Inquiry Tool Coded Using Python Tkinter to Batch Download CLT Admission Ticket
 
