@@ -1,13 +1,25 @@
-# Tool Set for College Language Test
+# 大学语言四六级考试 准考证，成绩数据获取工具
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![last-commit](https://img.shields.io/github/last-commit/HollowMan6/Tool-Set-for-College-Language-Test)](../../graphs/commit-activity)
+[![release-date](https://img.shields.io/github/release-date/HollowMan6/Tool-Set-for-College-Language-Test)](../../releases)
+
+[![Followers](https://img.shields.io/github/followers/HollowMan6?style=social)](https://github.com/HollowMan6?tab=followers)
+[![watchers](https://img.shields.io/github/watchers/HollowMan6/Tool-Set-for-College-Language-Test?style=social)](../../watchers)
+[![stars](https://img.shields.io/github/stars/HollowMan6/Tool-Set-for-College-Language-Test?style=social)](../../stargazers)
+[![forks](https://img.shields.io/github/forks/HollowMan6/Tool-Set-for-College-Language-Test?style=social)](../../stargazers)
+
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://hollowman6.github.io/fund.html)
 [![GPL Licence](https://badges.frapsoft.com/os/gpl/gpl.svg?v=103)](https://opensource.org/licenses/GPL-3.0/)
+[![Repo-Size](https://img.shields.io/github/repo-size/HollowMan6/Tool-Set-for-College-Language-Test.svg)](../../archive/master.zip)
+
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/HollowMan6/Tool-Set-for-College-Language-Test.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/Tool-Set-for-College-Language-Test/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/HollowMan6/Tool-Set-for-College-Language-Test.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/HollowMan6/Tool-Set-for-College-Language-Test/context:python)
 
-This is a Download and Mark Inquiry Tool Coded Using Python Tkinter to Batch Download CLT Admission Ticket（CLT准考证批量下载，成绩查询工具）
+## CLT = College Language Test
 
-CLT = College Language Test
+(English version is down below)
+
+CLT准考证批量下载，成绩查询工具
 
 适用范围包括大学英语、俄语、德语、法语、日语四六级考试
 
@@ -96,10 +108,13 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 ***对于使用本代码所造成的一切不良后果，本人将不负任何责任！***
 
+# Tool Set for College Language Test
+
+This is a Download and Mark Inquiry Tool Coded Using Python Tkinter to Batch Download CLT Admission Ticket
+
 ***NEW*** : 2019.8.22 New Mark Inquiry Tool (Stable)(using CHSI, change IP to avoid CHAPTCHA)
 
 ***NEW*** : 2019.8.21 New Mark Inquiry Tool (using NEEA without Captcha) (Tested and available from 2019.21 9:00 to 15:00 (UTC+8)).
-
 
 support band 4 and band 6 CET/CJT/CRT/PHS/TFU
 
