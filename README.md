@@ -25,7 +25,22 @@ CLT准考证批量下载，成绩查询工具
 
 适用范围包括大学英语、俄语、德语、法语、日语四六级考试
 
+***新*** : 2019.12.3 修改CLT准考证批量下载工具，以符合最新下载要求。
+
+在此最新版本中，我将更多主动权给予了用户，用户需要：
+
+* 首先运行Fiddler等抓包工具，摸清可调用快速打印准考证、准考证下载的服务器地址。
+  
+* 随后在程序中输入服务器地址
+
+(程序自带的默认地址为2019年下半年的服务器地址)
+
+例：对于准考证下载网址，你抓包获得的地址是**http://cet-bm.neea.edu.cn/Home/DownTestTicket?SID=xxxxxxxxxxxx** , 则在界面中输入**http://cet-bm.neea.edu.cn/Home/DownTestTicket**
+
+另外，因为网站新阻止了频繁批量下载，因而我们需要对主机挂VPN，切换IP。
+
 ***新*** : 2019.8.22 新增成绩查询工具（稳定）（学信网通道，更换IP免验证码）
+
 ***新*** : 2019.8.21 新增成绩查询工具（教考网通道，无验证码状态）（在2019.8.21 9：00-15：00（UTC+8）时使用亲测成功。）
 
 [Win程序(准考证下载):](Download-Tools-for-CLT-Admission-Ticket.exe) 
@@ -89,7 +104,7 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 
 * 首先运行Fiddler等抓包工具，摸清可调用查分功能的地址。
   
-* 随后在脚本程序中输入成绩查询服务器
+* 随后在程序中输入成绩查询服务器
 
 例：你抓包获得的地址是**http://47.94.127.138/CLT/query?data=xxxxxxxxxxxx** , 则在界面中输入**http://47.94.127.138/CLT/query?data**
 
@@ -115,6 +130,20 @@ python3 Get-Info-from-CLT-Admission-Ticket.py
 [Python Dependencies](../../network/dependencies)
 
 This is a Download and Mark Inquiry Tool Coded Using Python Tkinter to Batch Download CLT Admission Ticket
+
+***NEW*** : 2019.12.3 Modify the Download Tools for CLT Admission Ticket to meet the latest download requirements.
+
+In this latest version, I give more initiative to users. Users need to:
+
+* First, run fiddler and other packet grabbing tools to find out the server address that can be used to quickly print and download the examination tickets.
+
+* Then enter the server address in the program
+
+(the default address of the program is the server address in the second half exam time of 2019)
+
+For example: for the download website of the admission certificate, the address you get by grabbing the package is **http://cet-bm.neea.edu.cn/Home/DownTestTicket?SID=xxxxxxxxxxxx**, then enter **http://cet-bm.neea.edu.cn/Home/DownTestTicket**.
+
+In addition, because the website prevents frequent bulk downloads newly, we need to hang VPN on the host to switch IP.
 
 ***NEW*** : 2019.8.22 New Mark Inquiry Tool (Stable)(using CHSI, change IP to avoid CHAPTCHA)
 
@@ -182,7 +211,7 @@ The information in info.txt can be used for further operations.
 
 * First, run Fiddler and other package capture tools to find out the address of the invokable Mark Inquiry function sever.
 
-* Then enter the Mark Inquiry server address in the script program
+* Then enter the Mark Inquiry server address in the program
 
 eg.: The address you get by grabbing the package is **http://47.94.127.138/CLT/query? Data = xxxxxxxxxxxxxxxxxx**, then enter **http://47.94.127.138/CLT/query data** in the interface.
 

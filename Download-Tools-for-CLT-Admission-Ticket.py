@@ -37,6 +37,8 @@ IDNumberlist = []
 Namelist = []
 ssid = ""
 pool = ""
+infourl = 'http://cet-bm.neea.edu.cn/Home/ToQuickPrintTestTicket'
+downhost = 'http://cet-bm.neea.edu.cn/Home/DownTestTicket'
 
 
 class visit:
@@ -49,8 +51,7 @@ class visit:
 
     def login(self, provinceCode, IDTypeCode, IDNumber, Name, verificationCode):
         # 页面相关设置 Page Related Settings
-        global countt, end, flag, quest, ssid, pool , IDNumberlist, Namelist
-        infourl = 'http://cet.etest.net.cn/Home/ToQuickPrintTestTicket'
+        global countt, end, flag, quest, ssid, pool, IDNumberlist, Namelist
         try:
             # 获取下载SID
             postdata = {
@@ -81,33 +82,56 @@ class visit:
                         T.insert(tk.END, "验证码错误！\n")
                         tkinter.messagebox .showerror(
                             '错误', '验证码错误！', parent=root)
+                elif "频繁" in r:
+                    end = True
+                    flag = False
+                    if quest == False:
+                        quest = True
+                        T.insert(tk.END, "访问过于频繁！\n")
+                        tkinter.messagebox .showerror(
+                            '错误', '访问过于频繁！请更换IP后再试！', parent=root)
                 else:
                     sids = re.findall(r'{\\"SID\\":\\"(.+?)\\"', str(r))
                     for sid in sids:
                         count = 0
                         if sid.isalnum():
-                            downlink = "http://cet.etest.net.cn/Home/DownTestTicket?SID="+sid
+                            downlink = downhost+"?SID="+sid
                             download = self.s.get(downlink)
                             if download.status_code == 200:
-                                download=download.content
+                                download = download.content
                                 if len(download) < 666:
                                     pass
                                 else:
                                     count += 1
                                     w = open("Downloads/"+Name +
-                                            str(count)+'.zip', 'wb')
+                                             str(count)+'.zip', 'wb')
                                     w.write(download)
                                     w.close()
                                     lb.insert(tk.END, Name)
                                     T.insert(tk.END, "成功下载"+Name+"的准考证，保存到" +
-                                            Name+str(count)+".zip\n")
+                                             Name+str(count)+".zip\n")
                             else:
+                                end = True
+                                flag = False
+                                if quest == False:
+                                    quest = True
+                                    T.insert(tk.END, "请检查准考证下载网址服务器设置！\n")
+                                    tkinter.messagebox .showerror(
+                                        '错误', '请检查准考证下载网址服务器设置！', parent=root)
                                 threadmax.release()
                                 return
                     countt += 1
                     Namelist.pop(IDNumberlist.index(IDNumber))
                     IDNumberlist.pop(IDNumberlist.index(IDNumber))
                     a.set("总计 "+str(countt)+" 个")
+            else:
+                end = True
+                flag = False
+                if quest == False:
+                    quest = True
+                    T.insert(tk.END, "请检查快速打印准考证网址服务器设置！\n")
+                    tkinter.messagebox .showerror(
+                        '错误', '请检查快速打印准考证网址服务器设置！', parent=root)
             threadmax.release()
         except Exception:
             threadmax.release()
@@ -143,7 +167,7 @@ def main():
 
 # 开始爬虫 Start Spidering
 def run():
-    global root, flag, end, ssid, pool, quest, verificationCode
+    global root, flag, end, ssid, pool, quest, verificationCode, infourl, downhost, e1, e2, e3, e4
     end = False
     quest = False
     if not os.path.exists('Downloads'):
@@ -151,10 +175,14 @@ def run():
     verificationCode = e.get()
     ssid = e1.get()
     pool = e2.get()
+    infourl = e3.get()
+    downhost = e4.get()
     if verificationCode == "":
         tkinter.messagebox .showerror('错误', '请输入验证码！', parent=root)
     elif ssid == "" or pool == "":
         tkinter.messagebox .showerror('错误', '请输入当前Cookies！', parent=root)
+    elif infourl == "" or downhost == "":
+        tkinter.messagebox .showerror('错误', '请输入服务器设置！', parent=root)
     elif flag == True:
         tkinter.messagebox .showwarning(
             '警告', '已经在下载中，请耐心等待！退出请点击“退出”按钮。', parent=root)
@@ -227,6 +255,15 @@ def pause():
         '提示', '正在暂停所有线程，请稍后！...', parent=root)
 
 
+tk.Label(text='服务器设置：').pack(anchor=tk.W)
+tk.Label(text='快速打印准考证网址：').pack(anchor=tk.W)
+e3 = tk.Entry(root)
+e3.insert(0, "http://cet-bm.neea.edu.cn/Home/ToQuickPrintTestTicket")
+e3.pack(anchor=tk.W)
+tk.Label(text='准考证下载网址：').pack(anchor=tk.W)
+e4 = tk.Entry(root)
+e4.insert(0, "http://cet-bm.neea.edu.cn/Home/DownTestTicket")
+e4.pack(anchor=tk.W)
 tk.Label(text='验证码：').pack(anchor=tk.W)
 e = tk.Entry(root)
 e.pack(anchor=tk.W)
