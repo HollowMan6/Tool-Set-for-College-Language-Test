@@ -43,17 +43,17 @@ CLT准考证批量下载，成绩查询工具
 
 ***新*** : 2019.8.21 新增成绩查询工具（教考网通道，无验证码状态）（在2019.8.21 9：00-15：00（UTC+8）时使用亲测成功。）
 
-[Win程序(准考证下载):](Download-Tools-for-CLT-Admission-Ticket.exe) 
+[Win程序(准考证下载):](Excutables/Download-Tools-for-CLT-Admission-Ticket.exe) 
 
-![](screenshoot.JPG) 
+![](Pics/screenshoot.JPG) 
 
-[Win程序(教考网通道成绩查询):](Inquire-Mark-Tool-from-NEEA-for-CLT.exe) 
+[Win程序(教考网通道成绩查询):](Excutables/Inquire-Mark-Tool-from-NEEA-for-CLT.exe) 
 
-![](screenshoot1.JPG)
+![](Pics/screenshoot1.JPG)
 
-[Win程序(学信网通道成绩查询):](Inquire-Mark-Tool-from-CHSI-for-CLT.exe) 
+[Win程序(学信网通道成绩查询):](Excutables/Inquire-Mark-Tool-from-CHSI-for-CLT.exe) 
 
-![](screenshoot2.JPG)
+![](Pics/screenshoot2.JPG)
 
 [下载工具脚本](Download-Tools-for-CLT-Admission-Ticket.py)
 
@@ -151,11 +151,11 @@ In addition, because the website prevents frequent bulk downloads newly, we need
 
 support band 4 and band 6 CET/CJT/CRT/PHS/TFU
 
-[Windows Program(Ticket Download Tool)](Download-Tools-for-CLT-Admission-Ticket.exe)
+[Windows Program(Ticket Download Tool)](Excutables/Download-Tools-for-CLT-Admission-Ticket.exe)
 
-[Windows Program(Mark Inquiry from NEEA without Captcha):](Inquire-Mark-Tool-from-NEEA-for-CLT.exe) 
+[Windows Program(Mark Inquiry from NEEA without Captcha):](Excutables/Inquire-Mark-Tool-from-NEEA-for-CLT.exe) 
 
-[Windows Program(Mark Inquiry from CHSI without Captcha):](Inquire-Mark-Tool-from-CHSI-for-CLT.exe) 
+[Windows Program(Mark Inquiry from CHSI without Captcha):](Excutables/Inquire-Mark-Tool-from-CHSI-for-CLT.exe) 
 
 [Download Tool Script](Download-Tools-for-CLT-Admission-Ticket.py)
 
